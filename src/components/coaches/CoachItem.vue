@@ -3,11 +3,20 @@
     <h3>{{ fullName }}</h3>
     <h4>${{ rate }} /hour</h4>
     <div>
-      <span v-for="area in areas" :key="area">{{ area }}</span>
+      <base-badge
+        v-for="area in areas"
+        :type="area"
+        :title="area"
+        :key="area"
+      ></base-badge>
     </div>
     <div class="actions">
-      <router-link to="coachContactLink">Contact</router-link>
-      <router-link to="coachDetailsLink">View Details</router-link>
+      <base-button class="margin" mode="outline" link :to="coachContactLink"
+        >Contact</base-button
+      >
+      <base-button class="margin" link :to="coachDetailsLink"
+        >View Details</base-button
+      >
     </div>
   </li>
 </template>
@@ -30,6 +39,9 @@ export default {
 </script>
 
 <style scoped>
+.margin {
+  margin-top: 20px;
+}
 li {
   margin: 1rem 0;
   border: 1px solid #424242;
