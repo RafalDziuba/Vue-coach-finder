@@ -11,6 +11,21 @@
 import TheHeader from './components/layout/TheHeader.vue';
 export default {
   components: { TheHeader },
+  created() {
+    this.$store.dispatch('autoLogin');
+  },
+  computed: {
+    logedOut() {
+      return this.$store.getters.logedOut;
+    },
+  },
+  watch: {
+    logedOut(currentValue, oldValue) {
+      if (currentValue && currentValue !== oldValue) {
+        this.$router.replace('/coaches');
+      }
+    },
+  },
 };
 </script>
 
